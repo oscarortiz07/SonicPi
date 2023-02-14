@@ -1,1 +1,1 @@
-# stranger-things-sonicpi
+# SonicPi
