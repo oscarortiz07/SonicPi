@@ -1,7 +1,9 @@
 # Welcome to Sonic Pi
+dj = "C:/Users/oscar_ortiz/Downloads/dj2.0.wav"
+
 use_bpm 230
 use_synth :piano
-live_loop :song do
+define :mainMelody do
   play :f2
   sleep 2
   play :g2
@@ -64,3 +66,29 @@ live_loop :song do
   sleep 1
   sleep 2
 end
+
+sample dj
+sleep 9
+
+live_loop :song do
+  mainMelody
+end
+
+sleep 20
+
+live_loop :drum do
+  with_fx :mono do
+    sample :drum_bass_soft
+    sleep 2
+  end
+end
+
+sleep 12
+
+live_loop :snare do
+  with_fx :eq do
+    sample :drum_snare_soft
+    sleep 4
+  end
+end
+
