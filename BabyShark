@@ -68,7 +68,7 @@ define :mainMelody do
 end
 
 sample dj
-sleep 9
+sleep 8
 
 live_loop :song do
   mainMelody
