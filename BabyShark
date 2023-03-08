@@ -3,68 +3,49 @@ dj = "C:/Users/oscar_ortiz/Downloads/dj2.0.wav"
 
 use_bpm 230
 use_synth :piano
+
+define :trippleb do
+  3.times do
+    play :b2
+    sleep 1
+  end
+  play :b2
+  sleep 0.5
+  play :b2
+  sleep 1
+end
+
+notes = [:b2, :b2, :f2, :g2]
+sleepTime = [0.5, 1, 1 ,1]
+index = 0
+
+define :fastnotes do
+  trippleb
+  4.times do
+    play notes[index]
+    sleep sleepTime[index]
+    index += 1
+  end
+  index = 0
+end
+
 define :mainMelody do
   play :f2
   sleep 2
   play :g2
   sleep 2
-  
-  3.times do
-    play :b2
-    sleep 1
-  end
-  play :b2
-  sleep 0.5
-  play :b2
-  sleep 1
-  
-  play :b2
-  sleep 0.5
-  play :b2
-  sleep 1
-  play :f2
-  sleep 1
-  play :g2
-  sleep 1
-  
-  3.times do
-    play :b2
-    sleep 1
-  end
-  play :b2
-  sleep 0.5
-  play :b2
-  sleep 1
-  
-  play :b2
-  sleep 0.5
-  play :b2
-  sleep 1
-  play :f2
-  sleep 1
-  play :g2
-  sleep 1
-  
-  3.times do
-    play :b2
-    sleep 1
-  end
-  play :b2
-  sleep 0.5
-  play :b2
-  sleep 1
-  
+  fastnotes
+  fastnotes
+  trippleb
   play :b2
   sleep 0.5
   3.times do
     play :b2
     sleep 1
   end
-  
   play :a2
   sleep 1
   sleep 1
-  sleep 2
 end
 
 sample dj
@@ -91,4 +72,3 @@ live_loop :snare do
     sleep 4
   end
 end
-
