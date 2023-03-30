@@ -1,215 +1,183 @@
 use_bpm 160
 use_synth :piano
 
-define :main_melody do
-  # Measure 1
-  play :f5
-  sleep 0.5
-  play :d5
-  sleep 0.5
-  play :a4
-  sleep 0.5
-  play :d5
-  sleep 0.5
+define :fourn do |notes|
+  i=0
+  if (i < 4) do
+      play notes[i]
+      sleep 0.5
+      i+=1
+    end
+  end
   
-  play :f5
-  sleep 0.5
-  play :d5
-  sleep 0.5
-  play :a4
-  sleep 0.5
-  play :d5
+  define :main_melody do
+    # Measure 1
+    fourn [:f5,:d5,:a4,:d5]
+    
+    fourn [:f5,:d5,:a4,:d5]
+    
+    # Measure 2
+    fourn [:f5,:c5,:a4,:c5]
+    
+    fourn [:f5,:c5,:a4,:c5]
+    
+    # Measure 3
+    fourn [:e5,:cs5,:a4,:c5]
+    
+    fourn [:e5,:cs5,:a4,:c5]
+    
+    # Measure 4
+    play :e5
+    sleep 0.5
+    play :cs5
+    sleep 0.5
+    play :a4
+    sleep 0.5
+    play :cs5
+    
+    play :e5
+    sleep 1
+    play :a5
+    sleep 1
+    
+    # Measure 5
+    play :d4
+    play :d5
+    sleep 3
+    play :e4
+    play :e5
+    sleep 1
+    
+    # Measure 6
+    play :f4
+    play :a4
+    play :f5
+    sleep 4
+    
+    # Measure 7
+    play :a4
+    play :c5
+    play :a5
+    sleep 1.5
+    play :g4
+    play :g5
+    sleep 1.5
+    play :a4
+    play :a5
+    sleep 1
+    
+    # Measure 8
+    play :c4
+    play :c5
+    sleep 4
+  end
   
-  # Measure 2
-  play :f5
-  sleep 0.5
-  play :c5
-  sleep 0.5
-  play :a4
-  sleep 0.5
-  play :c5
-  sleep 0.5
+  define :lower_notes do
+    # Measure 1
+    play :d2
+    play :d3
+    sleep 4
+    
+    # Measure 2
+    play :f2
+    play :f3
+    sleep 4
+    
+    # Measure 3
+    play :a2
+    play :a3
+    sleep 4
+    
+    # Measure 4
+    play :a2
+    play :a3
+    sleep 2
+    play :a2
+    play :a3
+    sleep 2
+    
+    # Measure 5
+    play :d2
+    sleep 0.5
+    play :a2
+    sleep 0.5
+    play :d3
+    sleep 0.5
+    play :a2
+    sleep 0.5
+    
+    play :f3
+    sleep 0.5
+    play :d3
+    sleep 0.5
+    play :a2
+    sleep 0.5
+    play :d3
+    sleep 0.5
+    
+    # Measure 6
+    play :d2
+    sleep 0.5
+    play :a2
+    sleep 0.5
+    play :f3
+    sleep 0.5
+    play :a2
+    sleep 0.5
+    
+    play :f3
+    sleep 0.5
+    play :d3
+    sleep 0.5
+    play :a2
+    sleep 0.5
+    play :d3
+    sleep 0.5
+    
+    # Measure 7
+    play :f2
+    sleep 0.5
+    play :c3
+    sleep 0.5
+    play :f3
+    sleep 0.5
+    play :c3
+    sleep 0.5
+    
+    play :a3
+    sleep 0.5
+    play :f3
+    sleep 0.5
+    play :c3
+    sleep 0.5
+    play :f3
+    sleep 0.5
+    
+    # Measure 8
+    play :f2
+    sleep 0.5
+    play :c3
+    sleep 0.5
+    play :f3
+    sleep 0.5
+    play :c3
+    sleep 0.5
+    
+    play :a3
+    sleep 0.5
+    play :f3
+    sleep 0.5
+    play :c3
+    sleep 0.5
+    play :f3
+    sleep 0.5
+  end
   
-  play :f5
-  sleep 0.5
-  play :c5
-  sleep 0.5
-  play :a4
-  sleep 0.5
-  play :c5
-  sleep 0.5
   
-  # Measure 3
-  play :e5
-  sleep 0.5
-  play :cs5
-  sleep 0.5
-  play :a4
-  sleep 0.5
-  play :c5
-  sleep 0.5
+  live_loop :main do
+    main_melody
+  end
+  live_loop :lower do
+    lower_notes
+  end
   
-  play :e5
-  sleep 0.5
-  play :cs5
-  sleep 0.5
-  play :a4
-  sleep 0.5
-  play :c5
-  sleep 0.5
-  
-  # Measure 4
-  play :e5
-  sleep 0.5
-  play :cs5
-  sleep 0.5
-  play :a4
-  sleep 0.5
-  play :cs5
-  
-  play :e5
-  sleep 1
-  play :a5
-  sleep 1
-  
-  # Measure 5
-  play :d4
-  play :d5
-  sleep 3
-  play :e4
-  play :e5
-  sleep 1
-  
-  # Measure 6
-  play :f4
-  play :a4
-  play :f5
-  sleep 4
-  
-  # Measure 7
-  play :a4
-  play :c5
-  play :a5
-  sleep 1.5
-  play :g4
-  play :g5
-  sleep 1.5
-  play :a4
-  play :a5
-  sleep 1
-  
-  # Measure 8
-  play :c4
-  play :c5
-  sleep 4
-end
-
-define :lower_notes do
-  # Measure 1
-  play :d2
-  play :d3
-  sleep 4
-  
-  # Measure 2
-  play :f2
-  play :f3
-  sleep 4
-  
-  # Measure 3
-  play :a2
-  play :a3
-  sleep 4
-  
-  # Measure 4
-  play :a2
-  play :a3
-  sleep 2
-  play :a2
-  play :a3
-  sleep 2
-  
-  # Measure 5
-  play :d2
-  sleep 0.5
-  play :a2
-  sleep 0.5
-  play :d3
-  sleep 0.5
-  play :a2
-  sleep 0.5
-  
-  play :f3
-  sleep 0.5
-  play :d3
-  sleep 0.5
-  play :a2
-  sleep 0.5
-  play :d3
-  sleep 0.5
-  
-  # Measure 6
-  play :d2
-  sleep 0.5
-  play :a2
-  sleep 0.5
-  play :f3
-  sleep 0.5
-  play :a2
-  sleep 0.5
-  
-  play :f3
-  sleep 0.5
-  play :d3
-  sleep 0.5
-  play :a2
-  sleep 0.5
-  play :d3
-  sleep 0.5
-  
-  # Measure 7
-  play :f2
-  sleep 0.5
-  play :c3
-  sleep 0.5
-  play :f3
-  sleep 0.5
-  play :c3
-  sleep 0.5
-  
-  play :a3
-  sleep 0.5
-  play :f3
-  sleep 0.5
-  play :c3
-  sleep 0.5
-  play :f3
-  sleep 0.5
-  
-  # Measure 8
-  play :f2
-  sleep 0.5
-  play :c3
-  sleep 0.5
-  play :f3
-  sleep 0.5
-  play :c3
-  sleep 0.5
-  
-  play :a3
-  sleep 0.5
-  play :f3
-  sleep 0.5
-  play :c3
-  sleep 0.5
-  play :f3
-  sleep 0.5
-end
-
-
-live_loop :main do
-  main_melody
-end
-live_loop :lower do
-  lower_notes
-end
-
