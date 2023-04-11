@@ -10,25 +10,21 @@ define :fourn do |notes|
   end
 end
 
+define :double do |a,b,c|
+  play a
+  play b
+  sleep c
+end
 
+
+mainFourNotes = [[:f5,:d5,:a4,:d5],[:f5,:d5,:a4,:d5],[:f5,:c5,:a4,:c5],[:f5,:c5,:a4,:c5],[:e5,:cs5,:a4,:c5],[:e5,:cs5,:a4,:c5],[:e5,:cs5,:a4,:cs5]]
 
 define :main_melody do
-  # Measure 1
-  fourn [:f5,:d5,:a4,:d5]
-  
-  fourn [:f5,:d5,:a4,:d5]
-  
-  # Measure 2
-  fourn [:f5,:c5,:a4,:c5]
-  
-  fourn [:f5,:c5,:a4,:c5]
-  
-  # Measure 3
-  fourn [:e5,:cs5,:a4,:c5]
-  
-  fourn [:e5,:cs5,:a4,:c5]
-  # Measure 4
-  fourn [:e5,:cs5,:a4,:cs5]
+  j=0
+  7.times do
+    fourn mainFourNotes[j]
+    j+=1
+  end
   
   play :e5
   sleep 1
@@ -54,62 +50,34 @@ define :main_melody do
   play :c5
   play :a5
   sleep 1.5
-  play :g4
-  play :g5
-  sleep 1.5
-  play :a4
-  play :a5
-  sleep 1
+  double :g4,:g5, 1.5
+  double :a4,:a5,1
   
   # Measure 8
-  play :c4
-  play :c5
-  sleep 4
+  double :c4,:c5,4
 end
 
-define :lower_notes do
+define :lower_melody do
   # Measure 1
-  play :d2
-  play :d3
-  sleep 4
+  double :d2,:d3,4
   
   # Measure 2
-  play :f2
-  play :f3
-  sleep 4
+  double :f2,:f3,4
   
   # Measure 3
-  play :a2
-  play :a3
-  sleep 4
+  double :a2,:a3,4
   
   # Measure 4
-  play :a2
-  play :a3
-  sleep 2
-  play :a2
-  play :a3
-  sleep 2
+  double :a2,:a3, 2
   
-  # Measure 5
-  fourn [:d2,:a2,:d3,:a2]
+  double :a2,:a3,2
   
-  fourn [:f3,:d3,:a2,:d3]
-  
-  # Measure 6
-  fourn [:d2,:a2,:f3,:a2]
-  
-  fourn [:f3,:d3,:a2,:d3]
-  
-  # Measure 7
-  fourn [:f2,:c3,:f3,:c3]
-  
-  fourn [:a3,:f3,:c3,:f3]
-  
-  # Measure 8
-  fourn [:f2,:c3,:f3,:c3]
-  
-  fourn [:a3,:f3,:c3,:f3]
+  lowerFourNotes = [[:d2,:a2,:d3,:a2],[:f3,:d3,:a2,:d3],[:d2,:a2,:f3,:a2],[:f3,:d3,:a2,:d3],[:f2,:c3,:f3,:c3],[:a3,:f3,:c3,:f3],[:f2,:c3,:f3,:c3],[:a3,:f3,:c3,:f3]]
+  j=0
+  8.times do
+    fourn lowerFourNotes[j]
+    j+=1
+  end
 end
 
 
@@ -117,6 +85,5 @@ live_loop :main do
   main_melody
 end
 live_loop :lower do
-  lower_notes
+  lower_melody
 end
-
