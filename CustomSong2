@@ -1,6 +1,26 @@
 use_bpm 160
 use_synth :piano
 
+dj = "C:/Users/oscar_ortiz/Downloads/dj2.0.wav"
+
+s = 0
+f = 1
+a = 3
+loop = 0
+live_loop :selection do
+  if loop > 7
+    stop
+  else
+    sample dj, start: s, finish: f, amp: a
+    s = f
+    f -= 0.125
+    a -= 0.42
+  end
+  
+  sleep 1
+  loop+=1
+end
+
 define :fourn do |notes|
   i=0
   4.times do
@@ -32,12 +52,8 @@ define :main_melody do
   sleep 1
   
   # Measure 5
-  play :d4
-  play :d5
-  sleep 3
-  play :e4
-  play :e5
-  sleep 1
+  double :d4,:d5,3
+  double :e4,:e5,1
   
   # Measure 6
   play :f4
@@ -51,8 +67,7 @@ define :main_melody do
   play :a5
   sleep 1.5
   double :g4,:g5, 1.5
-  double :a4,:a5,1
-  
+  double :a4,:a5, 1
   # Measure 8
   double :c4,:c5,4
 end
@@ -82,8 +97,14 @@ end
 
 
 live_loop :main do
-  main_melody
+  if loop > 7
+    main_melody
+  end
+  sleep 1
 end
 live_loop :lower do
-  lower_melody
+  if loop > 7
+    lower_melody
+  end
+  sleep 1
 end
