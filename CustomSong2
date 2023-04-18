@@ -3,23 +3,6 @@ use_synth :piano
 
 dj = "C:/Users/oscar_ortiz/Downloads/dj2.0.wav"
 
-s = 0
-f = 1
-a = 3
-loop = 0
-live_loop :selection do
-  if loop > 7
-    stop
-  else
-    sample dj, start: s, finish: f, amp: a
-    s = f
-    f -= 0.125
-    a -= 0.42
-  end
-  
-  sleep 1
-  loop+=1
-end
 
 define :fourn do |notes|
   i=0
@@ -95,7 +78,23 @@ define :lower_melody do
   end
 end
 
-
+s = 0
+f = 1
+a = 3
+loop = 0
+live_loop :selection do
+  if loop > 7
+    stop
+  else
+    sample dj, start: s, finish: f, amp: a
+    s = f
+    f -= 0.125
+    a -= 0.42
+  end
+  
+  sleep 1
+  loop+=1
+end
 live_loop :main do
   if loop > 7
     main_melody
