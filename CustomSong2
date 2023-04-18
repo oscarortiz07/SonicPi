@@ -3,11 +3,16 @@ use_synth :piano
 
 dj = "C:/Users/oscar_ortiz/Downloads/dj2.0.wav"
 
-
 define :fourn do |notes|
   i=0
+  randomNum = rrand_i(1,4)
   4.times do
     play notes[i]
+    if (randomNum == 1)
+      sample :drum_bass_soft
+    else
+      play notes[i]
+    end
     sleep 0.5
     i += 1
   end
@@ -18,7 +23,6 @@ define :double do |a,b,c|
   play b
   sleep c
 end
-
 
 mainFourNotes = [[:f5,:d5,:a4,:d5],[:f5,:d5,:a4,:d5],[:f5,:c5,:a4,:c5],[:f5,:c5,:a4,:c5],[:e5,:cs5,:a4,:c5],[:e5,:cs5,:a4,:c5],[:e5,:cs5,:a4,:cs5]]
 
@@ -35,8 +39,12 @@ define :main_melody do
   sleep 1
   
   # Measure 5
-  double :d4,:d5,3
-  double :e4,:e5,1
+  play :d4
+  play :d5
+  sleep 3
+  play :e4
+  play :e5
+  sleep 1
   
   # Measure 6
   play :f4
@@ -49,10 +57,17 @@ define :main_melody do
   play :c5
   play :a5
   sleep 1.5
-  double :g4,:g5, 1.5
-  double :a4,:a5, 1
+  play :g4
+  play :g5
+  sleep 1.5
+  play :a4
+  play :a5
+  sleep 1
+  
   # Measure 8
-  double :c4,:c5,4
+  play :c4
+  play :c5
+  sleep 4
 end
 
 define :lower_melody do
@@ -67,7 +82,6 @@ define :lower_melody do
   
   # Measure 4
   double :a2,:a3, 2
-  
   double :a2,:a3,2
   
   lowerFourNotes = [[:d2,:a2,:d3,:a2],[:f3,:d3,:a2,:d3],[:d2,:a2,:f3,:a2],[:f3,:d3,:a2,:d3],[:f2,:c3,:f3,:c3],[:a3,:f3,:c3,:f3],[:f2,:c3,:f3,:c3],[:a3,:f3,:c3,:f3]]
@@ -78,6 +92,8 @@ define :lower_melody do
   end
 end
 
+
+# Intro
 s = 0
 f = 1
 a = 3
@@ -95,6 +111,8 @@ live_loop :selection do
   sleep 1
   loop+=1
 end
+
+#Song starts
 live_loop :main do
   if loop > 7
     main_melody
@@ -107,3 +125,6 @@ live_loop :lower do
   end
   sleep 1
 end
+
+# 2, defined the list, used the list(iterated)
+# 2, show parameterized function, show multiple calls to it)
