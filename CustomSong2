@@ -97,34 +97,26 @@ end
 s = 0
 f = 1
 a = 3
-loop = 0
-live_loop :selection do
-  if loop > 7
-    stop
-  else
-    sample dj, start: s, finish: f, amp: a
-    s = f
-    f -= 0.125
-    a -= 0.42
-  end
-  
+7.times do
+  sample dj, start: s, finish: f, amp: a
   sleep 1
-  loop+=1
+  s = f
+  f -= 0.125
+  a -= 0.42
 end
 
 #Song starts
 live_loop :main do
-  if loop > 7
+  5.times do
     main_melody
   end
-  sleep 1
+  sample :ambi_choir,beat_stretch: 8, amp: 4
+  stop
 end
 live_loop :lower do
-  if loop > 7
+  5.times do
     lower_melody
   end
-  sleep 1
+  sample :ambi_choir,beat_stretch: 8, amp: 4
+  stop
 end
-
-# 2, defined the list, used the list(iterated)
-# 2, show parameterized function, show multiple calls to it)
