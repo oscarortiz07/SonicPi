@@ -3,9 +3,8 @@ use_synth :piano
 
 dj = "C:/Users/oscar_ortiz/Downloads/dj2.0.wav"
 
-define :fourn do |notes|
+define :fourn do |notes, randomNum|
   i=0
-  randomNum = rrand_i(1,4)
   4.times do
     play notes[i]
     if (randomNum == 1)
@@ -29,7 +28,7 @@ mainFourNotes = [[:f5,:d5,:a4,:d5],[:f5,:d5,:a4,:d5],[:f5,:c5,:a4,:c5],[:f5,:c5,
 define :main_melody do
   j=0
   7.times do
-    fourn mainFourNotes[j]
+    fourn mainFourNotes[j], rrand_i(1,4)
     j+=1
   end
   
@@ -87,7 +86,7 @@ define :lower_melody do
   lowerFourNotes = [[:d2,:a2,:d3,:a2],[:f3,:d3,:a2,:d3],[:d2,:a2,:f3,:a2],[:f3,:d3,:a2,:d3],[:f2,:c3,:f3,:c3],[:a3,:f3,:c3,:f3],[:f2,:c3,:f3,:c3],[:a3,:f3,:c3,:f3]]
   j=0
   8.times do
-    fourn lowerFourNotes[j]
+    fourn lowerFourNotes[j], rrand_i(1,4)
     j+=1
   end
 end
