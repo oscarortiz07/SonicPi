@@ -6,10 +6,9 @@ dj = "C:/Users/oscar_ortiz/Downloads/dj2.0.wav"
 define :fourn do |notes, randomNum|
   i=0
   4.times do
+    play notes[i]
     if (randomNum == 1)
       sample :drum_bass_soft
-    else
-      play notes[i]
     end
     sleep 0.5
     i += 1
