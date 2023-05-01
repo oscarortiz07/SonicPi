@@ -9,6 +9,8 @@ define :fourn do |notes, randomNum|
     play notes[i]
     if (randomNum == 1)
       sample :drum_bass_soft
+    else
+      puts("sample doesnt play")
     end
     sleep 0.5
     i += 1
